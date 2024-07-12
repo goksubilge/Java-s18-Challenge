@@ -36,4 +36,15 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }
+
+    @Override
+    public Category delete(long id) {
+        Category category = findById(id);
+        if(category != null){
+            categoryRepository.delete(category);
+            return category;
+        }
+        //TODO throw exception
+        return null;
+    }
 }

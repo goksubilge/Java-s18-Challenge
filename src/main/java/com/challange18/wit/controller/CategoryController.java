@@ -34,4 +34,23 @@ public class CategoryController {
     public List<CategoryResponse> getAll(){
         return EntityConverter.findResults(categoryService.findAll());
     }
+
+    @PutMapping("/{id}")
+    public CategoryResponse save(@RequestBody Category category, @PathVariable long id){
+        Category foundCategory = categoryService.findById(id);
+        if(foundCategory != null ){
+            category.setId(id);
+            return EntityConverter.findResult(categoryService.save(category));
+        }
+        // TODO exception
+        return null;
+    }
+
+
+    /*
+    @DeleteMapping("/{id}")
+    public CategoryResponse remove(@PathVariable long id){
+        return EntityConverter.findResult(categoryService.delete(id));
+    }*/
+
 }
