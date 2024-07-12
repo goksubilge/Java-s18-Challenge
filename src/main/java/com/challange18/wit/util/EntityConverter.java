@@ -1,6 +1,8 @@
 package com.challange18.wit.util;
 
+import com.challange18.wit.dto.BookResponse;
 import com.challange18.wit.dto.CategoryResponse;
+import com.challange18.wit.entity.Book;
 import com.challange18.wit.entity.Category;
 
 import java.util.ArrayList;
@@ -15,6 +17,17 @@ public class EntityConverter {
         return categoryResponses;
     }
     public static CategoryResponse findResult (Category category){
+        return new CategoryResponse(category.getId(), category.getName());
+    }
+
+    public static List<BookResponse> findResultBooks(List<Book> books) {
+        List<BookResponse> bookResponses = new ArrayList<>();
+        for(Book book: books){
+            bookResponses.add(new BookResponse(book.getId(), book.getName(),book.getCategory(),book.getAuthor()));
+        }
+        return bookResponses;
+    }
+    public static CategoryResponse findResultBook (Category category){
         return new CategoryResponse(category.getId(), category.getName());
     }
 }
