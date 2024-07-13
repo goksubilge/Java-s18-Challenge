@@ -41,8 +41,8 @@ public class BookController {
         return new BookResponse(book.getId(), book.getName(), book.getCategory().getName(),null);*/
     }
 
-    @PostMapping("/saveByAuthor/{categoryId}/{authorId}")
-    public BookResponse save(@RequestBody Book book, @PathVariable long categoryId, @PathVariable long authorId) {
+    @PostMapping("/saveByAuthor")
+    public BookResponse save(@RequestBody Book book, @RequestParam long categoryId, @RequestParam long authorId) {
 
         // Saving Category Bi-directional
         Category category = categoryService.findById(categoryId);
