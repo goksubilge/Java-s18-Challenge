@@ -8,7 +8,6 @@ public interface BookService {
     List<Book> findAll();
     Book findById(long id);
     Book saveC(Book book);
-    Book saveCA(Book book);
     Book update(Book book);
     Book delete(long id);
 }
