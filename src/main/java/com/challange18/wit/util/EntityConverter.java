@@ -1,9 +1,12 @@
 package com.challange18.wit.util;
 
+import com.challange18.wit.dto.AuthorResponse;
 import com.challange18.wit.dto.BookResponse;
 import com.challange18.wit.dto.CategoryResponse;
+import com.challange18.wit.entity.Author;
 import com.challange18.wit.entity.Book;
 import com.challange18.wit.entity.Category;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +24,14 @@ public class EntityConverter {
     }
 
     public static BookResponse findResultBook (Book book){
-        return new BookResponse(book.getId(), book.getName(),book.getCategory().getName(),(book.getAuthor().getFirstName() + "  " + book.getAuthor().getLastName()));
+        return new BookResponse(book.getId(),
+                book.getName(),
+                book.getCategory().getName(),
+                new AuthorResponse(book.getAuthor().getId(),book.getAuthor().getFirstName() + " " + book.getAuthor().getLastName()));
     }
+    // new AuthorResponse(author.getId(),
+    //                   (author.getFirstName() + " " +author.getLastName())));
+    // direkt author'dan çekmeyi kabul etmedi, anlamadım sebebini
 
     public static List<BookResponse> findResultBooks(List<Book> books) {
         List<BookResponse> bookResponses = new ArrayList<>();
