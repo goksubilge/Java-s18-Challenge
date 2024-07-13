@@ -20,6 +20,10 @@ public class EntityConverter {
         return new CategoryResponse(category.getId(), category.getName());
     }
 
+    public static BookResponse findResultBook (Book book){
+        return new BookResponse(book.getId(), book.getName(),book.getCategory().getName(),(book.getAuthor().getFirstName() + "  " + book.getAuthor().getLastName()));
+    }
+
     public static List<BookResponse> findResultBooks(List<Book> books) {
         List<BookResponse> bookResponses = new ArrayList<>();
         for(Book book: books){
@@ -27,10 +31,6 @@ public class EntityConverter {
             // authorName -> (book.getAuthor().getFirstName() + "  " + book.getAuthor().getLastName())
         }
         return bookResponses;
-    }
-    public static BookResponse findResultBook (Book book){
-        return new BookResponse(book.getId(), book.getName(),book.getCategory().getName(),null);
-
     }
 }
 
