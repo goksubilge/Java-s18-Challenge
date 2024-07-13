@@ -46,11 +46,9 @@ public class CategoryController {
         return null;
     }
 
-
-    /*
     @DeleteMapping("/{id}")
     public CategoryResponse remove(@PathVariable long id){
         return EntityConverter.findResult(categoryService.delete(id));
-    }*/
+    }
 
 }
