@@ -23,11 +23,15 @@ public class EntityConverter {
     public static List<BookResponse> findResultBooks(List<Book> books) {
         List<BookResponse> bookResponses = new ArrayList<>();
         for(Book book: books){
-            bookResponses.add(new BookResponse(book.getId(), book.getName(),book.getCategory(),book.getAuthor()));
+            bookResponses.add(new BookResponse(book.getId(), book.getName(),book.getCategory().getName(),null));
+            // authorName -> (book.getAuthor().getFirstName() + "  " + book.getAuthor().getLastName())
         }
         return bookResponses;
     }
-    public static CategoryResponse findResultBook (Category category){
-        return new CategoryResponse(category.getId(), category.getName());
+    public static BookResponse findResultBook (Book book){
+        return new BookResponse(book.getId(), book.getName(),book.getCategory().getName(),null);
+
     }
 }
+
+// adım adım yazdığım için henüz author 'a bişey ekleyemiyorum. o yüzden NullPointerException hatası vermesin diye böyle yazdım.
